@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const notesSchema_1 = require("../schemas/notesSchema");
+const validateSchema_1 = require("../middlewares/validateSchema");
+const notesController_1 = require("../controllers/notesController");
+const notesRouter = (0, express_1.Router)();
+notesRouter.post('/notes', (0, validateSchema_1.validateSchemaMiddleware)(notesSchema_1.noteSchema), notesController_1.createNotes);
+notesRouter.get('/notes', notesController_1.getNote);
+notesRouter.get('/notes/:id', notesController_1.getNotes);
+notesRouter.delete('/notes/:id', notesController_1.deleteNotes);
+exports.default = notesRouter;

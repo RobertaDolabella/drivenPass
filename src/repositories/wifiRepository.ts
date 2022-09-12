@@ -1,18 +1,17 @@
 import { prismadata } from '../config/database';
 import { WifiSent } from "../types/loginTypes";
-import Cryptr from "cryptr"
 import { Users, Wifis } from '@prisma/client';
-import wifis from '../controllers/wifiController';
 
 
-export async function checkWifi(userId: number, wifiData: WifiSent) {
+
+export async function checkWifi(userId: number, wifiData: WifiSent){
 
     const wifi = await prismadata.wifis.findMany({ where: { userId, title: wifiData.title } })
 
     return wifi
 }
 
-export async function checkToken(token: string) {
+export async function checkToken(token: string): Promise<Users> {
 
     const user: Users | any = await prismadata.users.findFirst({ where: { token } })
 
