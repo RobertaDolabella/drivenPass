@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var cardSchema_1 = require("../schemas/cardSchema");
+var validateSchema_1 = require("../middlewares/validateSchema");
+var cardController_1 = require("../controllers/cardController");
+var cardRouter = (0, express_1.Router)();
+cardRouter.post('/cards', (0, validateSchema_1.validateSchemaMiddleware)(cardSchema_1.cardSchema), cardController_1.createCards);
+cardRouter.get('/cards/:id', cardController_1.getCard);
+cardRouter["delete"]('/cards/:id', cardController_1.deleteCards);
+exports["default"] = cardRouter;

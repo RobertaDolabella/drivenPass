@@ -1,0 +1,15 @@
+"use strict";
+exports.__esModule = true;
+var express_1 = require("express");
+var userRouter_1 = require("./userRouter");
+var credentialsRouter_1 = require("./credentialsRouter");
+var notesRouter_1 = require("./notesRouter");
+var cardRouter_1 = require("./cardRouter");
+var wifiRouter_1 = require("./wifiRouter");
+var router = (0, express_1.Router)();
+router.use(userRouter_1["default"]);
+router.use(credentialsRouter_1["default"]);
+router.use(notesRouter_1["default"]);
+router.use(cardRouter_1["default"]);
+router.use(wifiRouter_1["default"]);
+exports["default"] = router;
